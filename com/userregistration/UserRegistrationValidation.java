@@ -2,10 +2,10 @@ package com.userregistration;
 
 
 /*
-@description: class to checking user password having 1 upper case
-and atleast 1 number and 1 special character by regular expression
-@parameters: defining a method checkpassword() to
-check if password is valid using regular expression 
+@description: class to validate emailID by using
+regular expression
+@parameters: defining a method emailCheck() to
+check if email is valid or not using regular expression 
  */
 
 import java.util.*;
@@ -13,24 +13,22 @@ import java.util.regex.*;
 
 public class UserRegistrationValidation {
 
-	// method to check Password is valid or not by using regular expression
-	public static boolean checkPassword() {
+	// method for email validation by using regular expression
+	public static boolean emailCheck() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter minimum 8 Character password : ");
-		String password = sc.next();
+		System.out.println("Enter email: ");
+		String email = sc.next();
+		if (Pattern.matches("[a-z A-Z 0-9][a-z A-Z 0-9_.]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+", email)) {
 
-		if (Pattern.matches("[\\S]{8,}", password) && Pattern.matches(".*[A-Z].*", password) 
-				&& Pattern.matches(".*[0-9].*", password) && Pattern.matches(".*[\\W]{1}.*", password)) {
-			System.out.println("Password valid");
+			System.out.println("valid");
 			return true;
 		} else {
-			System.out.println("Password invalid");
-			return checkPassword();
+			System.out.println("invalid");
+			return emailCheck();
 		}
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to user registration");
-		checkPassword();
+		emailCheck();
 	}
 } 
