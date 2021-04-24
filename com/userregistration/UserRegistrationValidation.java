@@ -3,15 +3,14 @@ package com.userregistration;
 
 /*
 @description: class to checking user password having 1 upper case
-by regular expression
-@parameters: defining a method checkpassword() to
-check if phone number is valid using regular expression 
+and atleast 1 number by regular expression.
+ 
  */
 
 import java.util.*;
 import java.util.regex.*;
 
-public class UserRegistrationValidation {
+public class UserRegistrationValidation{
 
 	// method to check Password is valid or not by using regular expression
 	public static boolean checkPassword() {
@@ -19,7 +18,7 @@ public class UserRegistrationValidation {
 		System.out.println("Enter minimum 8 Character password : ");
 		String password = sc.next();
 
-		if (Pattern.matches("[\\S]{8,}", password) && Pattern.matches(".*[A-Z].*", password)) {
+		if (Pattern.matches("[\\S]{8,}", password) && Pattern.matches(".*[A-Z].*", password) && Pattern.matches(".*[0-9].*", password)) {
 			System.out.println("Password valid");
 			return true;
 		} else {
